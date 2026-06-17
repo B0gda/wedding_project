@@ -1,0 +1,30 @@
+.shiny-text {
+  display: inline-block;
+  color: var(--shiny-color);
+  background: linear-gradient(
+    90deg,
+    var(--shiny-color) 0%,
+    var(--shiny-shine) 48%,
+    var(--shiny-color) var(--shiny-spread)
+  );
+  background-size: 240% 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shiny-text var(--shiny-speed) linear var(--shiny-delay) infinite;
+}
+
+@keyframes shiny-text {
+  from {
+    background-position: 120% 0;
+  }
+
+  to {
+    background-position: -120% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text {
+    animation: none;
+  }
+}

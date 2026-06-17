@@ -1,0 +1,36 @@
+.text-pressure {
+  width: 100%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', var(--font-ui);
+  font-weight: 800;
+  line-height: 0.72;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
+  letter-spacing: 0;
+  transform: scaleX(0.82);
+  transform-origin: center;
+  user-select: none;
+}
+
+.text-pressure--flex {
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.text-pressure__letter,
+.text-pressure__space {
+  display: inline-block;
+  transform-origin: center bottom;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    -webkit-text-stroke 180ms ease;
+  will-change: opacity, transform;
+}
+
+.text-pressure__space {
+  width: 0.22em;
+}

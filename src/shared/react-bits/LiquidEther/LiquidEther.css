@@ -1,0 +1,12 @@
+.liquid-ether {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.liquid-ether canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

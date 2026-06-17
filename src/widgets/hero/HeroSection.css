@@ -1,0 +1,372 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: visible;
+  display: grid;
+  align-items: center;
+  padding: clamp(6rem, 9vw, 7.5rem) clamp(1rem, 4vw, 4rem) 0;
+}
+
+.hero__shell {
+  position: relative;
+  width: min(1680px, 100%);
+  min-height: min(820px, calc(100svh - 8.5rem));
+  overflow: visible;
+  margin: 0 auto;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(420px, 1.02fr) minmax(430px, 1fr) minmax(200px, 0.46fr);
+  min-height: min(820px, calc(100svh - 8.5rem));
+  width: min(1540px, 100%);
+  margin: 0 auto;
+  gap: clamp(1rem, 2.6vw, 2.8rem);
+  align-content: center;
+  align-items: center;
+  padding: clamp(1.8rem, 4.5vw, 4.8rem) 0;
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 7;
+  display: grid;
+  gap: clamp(0.9rem, 2vw, 1.4rem);
+  text-align: left;
+}
+
+.hero__eyebrow {
+  margin: 0;
+  color: var(--color-right);
+  font-family: var(--font-ui);
+  font-size: clamp(0.86rem, 2vw, 1rem);
+  font-weight: 750;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  width: min(760px, 100%);
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 5.3vw, 5.85rem);
+  font-weight: 650;
+  line-height: 0.9;
+  text-wrap: balance;
+  text-shadow: 0 10px 44px rgba(139, 107, 85, 0.14);
+}
+
+.hero__photo-stage {
+  position: relative;
+  z-index: 2;
+  width: min(790px, 100%);
+  margin: 0 auto;
+  align-self: end;
+}
+
+.hero__portrait-frame {
+  position: relative;
+  display: grid;
+  min-height: clamp(39rem, 70vw, 56rem);
+  overflow: visible;
+  place-items: stretch;
+  isolation: isolate;
+}
+
+.hero__portrait-frame::before {
+  position: absolute;
+  inset: 3.5% 0 2.4% 1.2%;
+  z-index: 1;
+  content: '';
+  border: clamp(0.75rem, 1.6vw, 1.25rem) solid rgba(184, 175, 163, 0.48);
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.58), rgba(241, 234, 223, 0.08)),
+    rgba(241, 234, 223, 0.18);
+}
+
+.hero__portrait-frame::after {
+  position: absolute;
+  inset: 3.5% 0 2.4% 1.2%;
+  z-index: 4;
+  content: '';
+  border: clamp(0.75rem, 1.6vw, 1.25rem) solid rgba(184, 175, 163, 0.48);
+  pointer-events: none;
+}
+
+.hero__photo-viewport {
+  position: absolute;
+  inset: 3.5% 0 2.4% 1.2%;
+  z-index: 2;
+  display: grid;
+  overflow: hidden;
+  place-items: end center;
+}
+
+.hero__photo {
+  display: block;
+  width: min(1130px, 160%);
+  filter: brightness(1.13) contrast(0.98) saturate(1.04);
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateY(-1.5%);
+}
+
+.hero__flower {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero__flower--left {
+  bottom: -4%;
+  left: -7%;
+  width: clamp(12rem, 22vw, 21rem);
+  rotate: -8deg;
+}
+
+.hero__flower--right {
+  top: -2%;
+  right: -6%;
+  width: clamp(8.5rem, 14vw, 13rem);
+  rotate: 10deg;
+}
+
+.hero__invitation {
+  position: relative;
+  z-index: 7;
+  display: grid;
+  gap: clamp(0.8rem, 1.7vw, 1.15rem);
+  align-self: center;
+  color: rgba(90, 68, 54, 0.78);
+}
+
+.hero__invitation p {
+  margin: 0;
+  font-size: clamp(1.02rem, 1.45vw, 1.22rem);
+  line-height: 1.72;
+}
+
+.hero__invitation .hero__guest-name {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.hero__invitation span {
+  width: fit-content;
+  margin-top: 0.25rem;
+  color: var(--color-right);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.hero__cards {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1 / -1;
+  justify-content: center;
+  gap: clamp(0.8rem, 2vw, 1.35rem);
+  width: min(1060px, 100%);
+  margin: clamp(0.5rem, 2vw, 1.5rem) auto 0;
+}
+
+.hero__calendar {
+  grid-column: 1 / -1;
+  width: min(780px, 100%);
+  margin: clamp(0.8rem, 2vw, 1.6rem) auto 0;
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.hero__calendar .invitation-calendar__header span {
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+}
+
+.hero__calendar .invitation-calendar__count,
+.hero__calendar .invitation-calendar__count.count-up-text {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7.5vw, 7.2rem);
+  line-height: 1;
+}
+
+.hero__calendar .invitation-calendar__day {
+  min-height: clamp(1.8rem, 3vw, 2.45rem);
+  font-size: clamp(0.82rem, 1.3vw, 1rem);
+}
+
+.hero__calendar .invitation-calendar__day--selected svg {
+  width: clamp(2.5rem, 4.5vw, 3.6rem);
+  height: clamp(2.5rem, 4.5vw, 3.6rem);
+}
+
+.hero__card {
+  display: inline-flex;
+  min-height: 3.2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.15rem;
+  border-bottom: 1px solid rgba(139, 107, 85, 0.28);
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-weight: 700;
+}
+
+.hero__card svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-right);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    padding-top: 6rem;
+  }
+
+  .hero__content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero__copy {
+    text-align: center;
+  }
+
+  .hero__title {
+    margin-inline: auto;
+  }
+
+  .hero__photo-stage {
+    width: min(100%, 34rem);
+    margin: 0 auto;
+  }
+
+  .hero__portrait-frame {
+    aspect-ratio: 0.7;
+    min-height: auto;
+  }
+
+  .hero__photo {
+    width: min(44rem, 136%);
+    max-width: none;
+    height: auto;
+    transform: translateY(0);
+  }
+
+  .hero__invitation {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero__invitation span {
+    margin-inline: auto;
+  }
+
+  .hero__shell,
+  .hero__content {
+    min-height: auto;
+  }
+
+  .hero__cards {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero__photo-stage {
+    width: min(100%, 34rem);
+  }
+
+  .hero__portrait-frame {
+    aspect-ratio: 0.66;
+  }
+
+  .hero__photo {
+    width: min(46.6rem, 161%);
+    height: auto;
+    transform: translateY(0);
+  }
+
+  .hero__flower--left {
+    bottom: -3.2%;
+    left: -5.5%;
+    width: clamp(9rem, 38vw, 15rem);
+  }
+
+  .hero__flower--right {
+    top: -2.4%;
+    right: -5%;
+    width: clamp(7rem, 28vw, 10.5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__flower--left {
+    bottom: -2.8%;
+    left: -5.2%;
+    width: clamp(8.2rem, 36vw, 12rem);
+  }
+
+  .hero__flower--right {
+    top: -2.4%;
+    right: -4.8%;
+    width: clamp(6.4rem, 27vw, 9rem);
+  }
+}
+
+@media (max-width: 355px) {
+  .hero__photo-stage {
+    width: min(100%, 21rem);
+  }
+
+  .hero__portrait-frame {
+    aspect-ratio: 0.64;
+  }
+
+  .hero__photo {
+    width: min(33rem, 172%);
+    height: auto;
+    transform: translateY(0);
+  }
+
+  .hero__flower--left {
+    bottom: -1.8%;
+    left: -4.4%;
+    width: 7.6rem;
+  }
+
+  .hero__flower--right {
+    top: -1.6%;
+    right: -4%;
+    width: 5.9rem;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1320px) {
+  .hero__content {
+    grid-template-columns: minmax(330px, 0.96fr) minmax(360px, 0.96fr) minmax(170px, 0.46fr);
+    gap: clamp(0.9rem, 2vw, 1.6rem);
+  }
+
+  .hero__title {
+    font-size: clamp(2.85rem, 4.5vw, 4.7rem);
+  }
+
+  .hero__invitation p {
+    font-size: clamp(0.98rem, 1.35vw, 1.1rem);
+  }
+}

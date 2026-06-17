@@ -1,0 +1,50 @@
+.dress-code {
+  display: grid;
+  gap: clamp(0.85rem, 2.4vw, 1.6rem);
+}
+
+.dress-code__pressure {
+  display: grid;
+  gap: 0;
+  align-items: center;
+  min-height: clamp(13rem, 27vw, 22rem);
+}
+
+.dress-code__pressure p {
+  margin: clamp(-2rem, -3vw, -0.8rem) 0 0;
+  color: rgba(90, 68, 54, 0.64);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3.5vw, 2.9rem);
+  line-height: 0.95;
+  text-align: center;
+}
+
+.dress-code__main {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.dress-code__main .border-glow__content {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.dress-code__main p {
+  margin: 0;
+  color: rgba(90, 68, 54, 0.82);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.65;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.dress-code__main strong {
+  color: var(--color-ink);
+  font-weight: 900;
+}
+
+@media (max-width: 560px) {
+  .dress-code__pressure p {
+    margin-top: calc(clamp(-2rem, -3vw, -0.8rem) - 30px);
+  }
+}

@@ -1,0 +1,81 @@
+.side-rays {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.84), transparent 34%),
+    linear-gradient(120deg, #f7efe6 0%, #e9f3ef 45%, #f8ebe7 100%);
+}
+
+.side-rays__ray {
+  position: absolute;
+  top: -12%;
+  width: 36%;
+  height: 128%;
+  opacity: calc(0.42 * var(--side-rays-intensity));
+  filter: blur(2px);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--side-rays-color) 82%, white) 42%,
+    rgba(255, 255, 255, 0.75) 52%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  transform-origin: top center;
+  animation: side-rays-drift 7s ease-in-out infinite alternate;
+}
+
+.side-rays__ray--left-a {
+  left: -12%;
+  transform: rotate(-18deg);
+}
+
+.side-rays__ray--left-b {
+  left: 10%;
+  width: 22%;
+  opacity: calc(0.28 * var(--side-rays-intensity));
+  transform: rotate(-8deg);
+  animation-duration: 9s;
+}
+
+.side-rays__ray--right-a {
+  right: -12%;
+  transform: rotate(18deg);
+  animation-delay: -2s;
+}
+
+.side-rays__ray--right-b {
+  right: 10%;
+  width: 22%;
+  opacity: calc(0.26 * var(--side-rays-intensity));
+  transform: rotate(8deg);
+  animation-duration: 8s;
+  animation-delay: -1s;
+}
+
+.side-rays__mist {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(220, 176, 141, 0.28), transparent 30%),
+    radial-gradient(circle at 82% 38%, rgba(139, 168, 160, 0.25), transparent 33%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.74));
+}
+
+@keyframes side-rays-drift {
+  from {
+    translate: -1.5% 0;
+  }
+
+  to {
+    translate: 1.5% 2%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-rays__ray {
+    animation: none;
+  }
+}

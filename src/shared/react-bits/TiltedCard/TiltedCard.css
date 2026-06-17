@@ -1,0 +1,78 @@
+.tilted-card {
+  position: relative;
+  display: grid;
+  min-height: 17rem;
+  align-content: end;
+  gap: 0.7rem;
+  overflow: hidden;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 24px 80px rgba(139, 107, 85, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transform-style: preserve-3d;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.tilted-card:hover {
+  box-shadow:
+    0 32px 110px rgba(139, 107, 85, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+}
+
+.tilted-card__color {
+  position: absolute;
+  inset: 0;
+  opacity: 0.82;
+}
+
+.tilted-card::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background:
+    linear-gradient(180deg, transparent 22%, rgba(90, 68, 54, 0.5) 100%),
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.32), transparent 34%);
+}
+
+.tilted-card__hex,
+.tilted-card h3,
+.tilted-card p,
+.tilted-card__overlay {
+  position: relative;
+  z-index: 1;
+  color: #fffaf4;
+}
+
+.tilted-card__hex {
+  width: fit-content;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  background: rgba(90, 68, 54, 0.42);
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.tilted-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3vw, 2.4rem);
+  line-height: 0.95;
+}
+
+.tilted-card p {
+  margin: 0;
+  color: rgba(255, 250, 244, 0.82);
+  line-height: 1.45;
+}
+
+.tilted-card__overlay {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}

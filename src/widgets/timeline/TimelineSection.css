@@ -1,0 +1,5 @@
+.timeline-stage {
+  position: relative;
+  overflow: visible;
+  padding-block: clamp(0.5rem, 2vw, 1rem);
+}

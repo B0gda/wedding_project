@@ -1,0 +1,25 @@
+.split-text {
+  display: inline-block;
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.split-text__token {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.split-text__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.split-text__word--line {
+  display: block;
+}
+
+.split-text__space {
+  display: inline-block;
+  width: 0.22em;
+}

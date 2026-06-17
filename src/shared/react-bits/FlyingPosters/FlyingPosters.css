@@ -1,0 +1,160 @@
+.flying-posters {
+  position: relative;
+  height: min(620px, 72svh);
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.flying-posters__track {
+  position: absolute;
+  inset: 9% 0;
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding-inline: 8vw;
+  animation: flying-track 24s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.flying-posters:hover .flying-posters__track {
+  animation-play-state: paused;
+}
+
+.flying-posters__card {
+  position: relative;
+  display: grid;
+  width: clamp(230px, 28vw, 360px);
+  height: clamp(300px, 38vw, 430px);
+  align-content: end;
+  gap: 0.8rem;
+  overflow: hidden;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 22% 14%, rgba(255, 255, 255, 0.22), transparent 28%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
+  box-shadow: 0 30px 90px rgba(139, 107, 85, 0.28);
+  transform: rotateY(-12deg) rotateX(5deg) translateZ(0);
+}
+
+.flying-posters--image {
+  height: min(680px, 76svh);
+}
+
+.flying-posters--image .flying-posters__track {
+  inset: 0;
+  gap: clamp(0.8rem, 2vw, 1.4rem);
+  padding-inline: 0;
+  animation-duration: 30s;
+}
+
+.flying-posters--image .flying-posters__card {
+  width: clamp(210px, 24vw, 330px);
+  height: clamp(320px, 42vw, 500px);
+  padding: 0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.flying-posters--image .flying-posters__card::before {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, transparent 54%, rgba(90, 68, 54, 0.46) 100%),
+    radial-gradient(circle at 18% 12%, rgba(241, 234, 223, 0.24), transparent 28%);
+}
+
+.flying-posters__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+.flying-posters__card:nth-child(2n) {
+  transform: rotateY(12deg) rotateX(-3deg) translateZ(70px);
+}
+
+.flying-posters__card:nth-child(3n) {
+  transform: rotateY(-7deg) rotateX(-5deg) translateZ(120px);
+}
+
+.flying-posters__card::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background:
+    linear-gradient(180deg, transparent 10%, rgba(90, 68, 54, 0.58) 100%),
+    radial-gradient(circle at 82% 18%, rgba(139, 107, 85, 0.48), transparent 30%),
+    radial-gradient(circle at 20% 84%, rgba(184, 175, 163, 0.28), transparent 34%);
+}
+
+.flying-posters__index,
+.flying-posters__time,
+.flying-posters__card h3,
+.flying-posters__card p {
+  position: relative;
+  z-index: 1;
+}
+
+.flying-posters__index {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: rgba(241, 234, 223, 0.42);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.flying-posters__time {
+  margin: 0;
+  color: var(--color-left);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.flying-posters__card h3,
+.flying-posters__card p {
+  margin: 0;
+}
+
+.flying-posters__card h3 {
+  color: var(--color-main);
+  font-size: 1.15rem;
+}
+
+.flying-posters__card p {
+  color: rgba(241, 234, 223, 0.78);
+  line-height: 1.5;
+}
+
+@keyframes flying-track {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: -50% 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .flying-posters {
+    height: 560px;
+  }
+
+  .flying-posters__track {
+    padding-inline: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flying-posters__track {
+    animation: none;
+  }
+}
