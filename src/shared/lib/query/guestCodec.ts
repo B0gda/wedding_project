@@ -56,7 +56,7 @@ function decodeGuestPayload(value: string): string {
 function parseGuestPayload(payload: string): GuestPersonalization {
   const people = parseGenderedGuestPayload(payload);
 
-  if (people.length > 0 && people.length <= 2) {
+  if (people.length > 0 && people.length <= 4) {
     return {
       salutation: buildSalutation(people),
       people,
@@ -66,7 +66,7 @@ function parseGuestPayload(payload: string): GuestPersonalization {
 
   const plainPeople = parsePlainGuestPayload(payload);
 
-  if (plainPeople.length === 0 || plainPeople.length > 2) {
+  if (plainPeople.length === 0 || plainPeople.length > 4) {
     return FALLBACK_GUEST;
   }
 
@@ -100,9 +100,12 @@ function parseGuestPerson(part: string): GuestPerson | null {
 }
 
 function parsePlainGuestPayload(payload: string): GuestPerson[] {
-  const names = payload.split(/\s+и\s+|_и_/u).map((name) => name.trim());
+  const names = payload
+    .split(/\s*,\s*|\s+и\s+|_и_/u)
+    .map((name) => name.trim())
+    .filter(Boolean);
 
-  if (names.length === 0 || names.length > 2 || names.some((name) => !isValidPlainName(name))) {
+  if (names.length === 0 || names.length > 4 || names.some((name) => !isValidPlainName(name))) {
     return [];
   }
 
@@ -117,10 +120,12 @@ function isValidPlainName(name: string): boolean {
 }
 
 function buildSalutation(people: GuestPerson[]): string {
-  if (people.length === 2) {
-    const [first, second] = people;
+  if (people.length > 1) {
+    const names = people.map((person) => person.name);
+    const lastName = names[names.length - 1] ?? '';
+    const previousNames = names.slice(0, -1);
 
-    return `${first.name} и ${second.name}`;
+    return `${previousNames.join(', ')} и ${lastName}`;
   }
 
   const [first] = people;

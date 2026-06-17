@@ -50,6 +50,20 @@ describe('guestCodec', () => {
     });
   });
 
+  it('decodes three plain names', () => {
+    const guest = encodeGuestPayload('Александр, Любовь и Михаил');
+
+    expect(readGuestFromSearch(`?guest=${guest}`)).toEqual({
+      salutation: 'Александр, Любовь и Михаил',
+      people: [
+        { gender: 'unknown', name: 'Александр' },
+        { gender: 'unknown', name: 'Любовь' },
+        { gender: 'unknown', name: 'Михаил' }
+      ],
+      isFallback: false
+    });
+  });
+
   it('falls back politely on broken base64', () => {
     expect(readGuestFromSearch('?guest=broken%')).toEqual({
       salutation: 'наш уважаемый гость',

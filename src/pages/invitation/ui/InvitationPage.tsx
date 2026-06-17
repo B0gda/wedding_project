@@ -107,9 +107,9 @@ function getHeroTitle(salutation: string, guestCount: number) {
     return salutation;
   }
 
-  const [firstName, secondName] = salutation.split(' и ');
-
-  return `${firstName}\nи\n${secondName}`;
+  return guestCount > 2
+    ? salutation.replace(', ', '\n').replaceAll(' и ', '\nи\n')
+    : salutation.replace(' и ', '\nи\n');
 }
 
 function getDaysUntilWedding() {
