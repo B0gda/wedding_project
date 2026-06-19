@@ -59,7 +59,7 @@
   font-weight: 650;
   line-height: 0.9;
   text-wrap: balance;
-  text-shadow: 0 10px 44px rgba(139, 107, 85, 0.14);
+  text-shadow: 0 10px 44px var(--color-shadow);
 }
 
 .hero__photo-stage {
@@ -84,7 +84,7 @@
   inset: 3.5% 0 2.4% 1.2%;
   z-index: 1;
   content: '';
-  border: clamp(0.75rem, 1.6vw, 1.25rem) solid rgba(184, 175, 163, 0.48);
+  border: clamp(0.75rem, 1.6vw, 1.25rem) solid var(--color-surface-soft);
   border-radius: 2px;
   background:
     linear-gradient(180deg, rgba(255, 250, 244, 0.58), rgba(241, 234, 223, 0.08)),
@@ -96,7 +96,7 @@
   inset: 3.5% 0 2.4% 1.2%;
   z-index: 4;
   content: '';
-  border: clamp(0.75rem, 1.6vw, 1.25rem) solid rgba(184, 175, 163, 0.48);
+  border: clamp(0.75rem, 1.6vw, 1.25rem) solid var(--color-surface-soft);
   pointer-events: none;
 }
 
@@ -145,7 +145,7 @@
   display: grid;
   gap: clamp(0.8rem, 1.7vw, 1.15rem);
   align-self: center;
-  color: rgba(90, 68, 54, 0.78);
+  color: var(--color-muted);
 }
 
 .hero__invitation p {
@@ -217,7 +217,7 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 0.35rem 0.15rem;
-  border-bottom: 1px solid rgba(139, 107, 85, 0.28);
+  border-bottom: 1px solid var(--color-border);
   color: var(--color-ink);
   font-family: var(--font-ui);
   font-weight: 700;
@@ -228,6 +228,18 @@
   height: 1.25rem;
   color: var(--color-right);
   flex: 0 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero__portrait-frame::before {
+    background:
+      linear-gradient(180deg, rgba(255, 248, 239, 0.1), rgba(43, 33, 26, 0.26)),
+      rgba(43, 33, 26, 0.18);
+  }
+
+  .hero__photo {
+    filter: brightness(0.98) contrast(1.02) saturate(0.94);
+  }
 }
 
 @media (max-width: 960px) {

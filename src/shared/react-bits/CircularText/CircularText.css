@@ -36,12 +36,13 @@
 }
 
 .circular-text__center {
-  display: flex;
+  display: grid;
   width: 2.85rem;
   height: 2.85rem;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  align-content: center;
+  gap: 0.02rem;
+  grid-template-rows: auto auto auto;
   place-items: center;
   border: 1px solid rgba(139, 107, 85, 0.22);
   border-radius: 50%;
@@ -50,15 +51,19 @@
   font-family: var(--font-display);
   font-size: 0.45rem;
   font-weight: 650;
-  line-height: 0.92;
+  line-height: 1;
   text-align: center;
+}
+
+.circular-text__center span {
+  display: block;
 }
 
 .circular-text__center span:nth-child(2) {
   font-family: var(--font-ui);
   font-size: 0.36rem;
   font-weight: 500;
-  line-height: 0.8;
+  line-height: 1;
 }
 
 @keyframes circular-spin {

@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;800&family=Playfair+Display:wght@600;650;700&display=swap');
 
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   --color-left: #b8afa3;
   --color-main: #f1eadf;
   --color-right: #8b6b55;
   --color-ink: #5a4436;
   --color-surface: #e7ddd0;
   --color-surface-soft: rgba(184, 175, 163, 0.34);
+  --color-muted: rgba(90, 68, 54, 0.82);
+  --color-card: rgba(241, 234, 223, 0.76);
+  --color-border: rgba(139, 107, 85, 0.22);
+  --color-shadow: rgba(139, 107, 85, 0.16);
   --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
   font-family: var(--font-ui);
@@ -42,6 +46,27 @@ select {
 
 ::selection {
   background: rgba(184, 175, 163, 0.34);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-left: #7c6757;
+    --color-main: #1b1511;
+    --color-right: #eadccc;
+    --color-ink: #fff8ef;
+    --color-surface: #2b211a;
+    --color-surface-soft: rgba(234, 220, 204, 0.16);
+    --color-muted: rgba(255, 248, 239, 0.78);
+    --color-card: rgba(43, 33, 26, 0.82);
+    --color-border: rgba(234, 220, 204, 0.22);
+    --color-shadow: rgba(0, 0, 0, 0.3);
+  }
+
+  ::selection {
+    color: #1b1511;
+    background: rgba(234, 220, 204, 0.86);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

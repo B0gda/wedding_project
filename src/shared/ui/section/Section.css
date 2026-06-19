@@ -48,6 +48,17 @@
   transform: scaleX(-1);
 }
 
+.section#dress-code .section__decor--right {
+  transform: none;
+}
+
+.section#invitation .section__decor--right {
+  top: clamp(7rem, 11vw, 10rem);
+  right: max(-12rem, -11vw);
+  opacity: 0.24;
+  transform: none;
+}
+
 .section__inner {
   position: relative;
   z-index: 2;
@@ -69,4 +80,18 @@
   max-width: 780px;
   margin: 0 0 clamp(1.5rem, 4vw, 2.4rem);
   text-wrap: balance;
+}
+
+@media (prefers-color-scheme: dark) {
+  .section__label,
+  .section__title,
+  .section .blur-text {
+    color: rgba(255, 250, 244, 0.94);
+  }
+
+  .section .shiny-text {
+    color: rgba(255, 250, 244, 0.86) !important;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
 }

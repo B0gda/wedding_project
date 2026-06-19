@@ -5,7 +5,7 @@
 
 .dress-code__pressure {
   display: grid;
-  gap: 0;
+  gap: clamp(0.25rem, 0.8vw, 0.6rem);
   align-items: center;
   min-height: clamp(13rem, 27vw, 22rem);
 }
@@ -15,8 +15,8 @@
 }
 
 .dress-code__pressure p {
-  margin: clamp(-1.2rem, -2vw, -0.4rem) 0 0;
-  color: rgba(90, 68, 54, 0.64);
+  margin: clamp(1.4rem, 3vw, 3rem) 0 0;
+  color: color-mix(in srgb, var(--color-ink) 64%, transparent);
   font-family: var(--font-display);
   font-size: clamp(1.45rem, 3.5vw, 2.9rem);
   line-height: 0.95;
@@ -35,7 +35,7 @@
 
 .dress-code__main p {
   margin: 0;
-  color: rgba(90, 68, 54, 0.82);
+  color: var(--color-muted);
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   line-height: 1.65;
   text-align: center;
@@ -49,6 +49,6 @@
 
 @media (max-width: 560px) {
   .dress-code__pressure p {
-    margin-top: calc(clamp(-2rem, -3vw, -0.8rem) - 30px);
+    margin-top: clamp(0.6rem, 5vw, 1.4rem);
   }
 }

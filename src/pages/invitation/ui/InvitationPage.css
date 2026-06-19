@@ -8,6 +8,42 @@
   overflow: clip;
 }
 
+.invitation-page__skeleton {
+  min-height: 100svh;
+  padding: clamp(5.5rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem) 0;
+}
+
+.invitation-page__skeleton-inner {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.35rem);
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.invitation-page__skeleton span {
+  position: relative;
+  overflow: hidden;
+  height: clamp(5.4rem, 9vw, 7.8rem);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-card);
+  box-shadow: 0 18px 60px var(--color-shadow);
+}
+
+.invitation-page__skeleton span::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 250, 244, 0.78) 46%,
+    transparent 72%
+  );
+  transform: translateX(-100%);
+  animation: invitation-skeleton 1.5s ease-in-out infinite;
+}
+
 .invitation-page__split {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
@@ -35,7 +71,7 @@
 
 .invitation-page__statement p {
   margin: 0;
-  color: rgba(90, 68, 54, 0.82);
+  color: var(--color-muted);
   font-size: clamp(1.05rem, 1.7vw, 1.24rem);
   line-height: 1.65;
 }
@@ -66,7 +102,7 @@
 .invitation-page__registry > p {
   width: min(920px, 100%);
   margin: 0 auto;
-  color: rgba(90, 68, 54, 0.82);
+  color: var(--color-muted);
   font-size: clamp(1.08rem, 2vw, 1.36rem);
   line-height: 1.7;
   text-align: center;
@@ -75,7 +111,7 @@
 .invitation-page__place-note {
   width: min(920px, 100%);
   margin: 0 auto;
-  color: rgba(90, 68, 54, 0.84);
+  color: var(--color-muted);
   font-size: clamp(1.08rem, 2vw, 1.36rem);
   font-weight: 700;
   line-height: 1.7;
@@ -102,9 +138,9 @@
   width: 100%;
   height: clamp(20rem, 34vw, 30rem);
   overflow: hidden;
-  border: 1px solid rgba(139, 107, 85, 0.2);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  box-shadow: 0 24px 70px rgba(139, 107, 85, 0.16);
+  box-shadow: 0 24px 70px var(--color-shadow);
 }
 
 .invitation-calendar {
@@ -113,12 +149,12 @@
   gap: clamp(0.85rem, 2vw, 1.15rem);
   overflow: hidden;
   padding: clamp(1.2rem, 3vw, 2rem);
-  border: 1px solid rgba(139, 107, 85, 0.18);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   background:
     radial-gradient(circle at 88% 10%, rgba(255, 250, 244, 0.86), transparent 28%),
     linear-gradient(145deg, rgba(241, 234, 223, 0.86), rgba(184, 175, 163, 0.22));
-  box-shadow: 0 26px 86px rgba(139, 107, 85, 0.16);
+  box-shadow: 0 26px 86px var(--color-shadow);
 }
 
 .invitation-calendar::before {
@@ -147,7 +183,7 @@
 }
 
 .invitation-calendar__header strong {
-  color: rgba(90, 68, 54, 0.58);
+  color: color-mix(in srgb, var(--color-ink) 58%, transparent);
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -161,7 +197,7 @@
 }
 
 .invitation-calendar__weekdays {
-  color: rgba(90, 68, 54, 0.56);
+  color: color-mix(in srgb, var(--color-ink) 56%, transparent);
   font-family: var(--font-display);
   font-size: clamp(1rem, 2vw, 1.35rem);
   font-style: italic;
@@ -184,7 +220,7 @@
 }
 
 .invitation-calendar__day--muted {
-  color: rgba(90, 68, 54, 0.3);
+  color: color-mix(in srgb, var(--color-ink) 30%, transparent);
 }
 
 .invitation-calendar__day--selected {
@@ -220,7 +256,7 @@
 }
 
 .invitation-calendar__countdown span {
-  color: rgba(90, 68, 54, 0.58);
+  color: color-mix(in srgb, var(--color-ink) 58%, transparent);
   font-size: clamp(0.72rem, 1vw, 0.88rem);
   font-weight: 800;
   line-height: 1;
@@ -249,6 +285,30 @@
 #coordinator .section__title {
   max-width: none;
   text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .invitation-page__skeleton span,
+  .invitation-calendar {
+    background:
+      radial-gradient(circle at 88% 10%, rgba(234, 220, 204, 0.16), transparent 28%),
+      linear-gradient(145deg, rgba(43, 33, 26, 0.92), rgba(124, 103, 87, 0.2));
+  }
+
+  .invitation-calendar::before {
+    border-color: rgba(234, 220, 204, 0.14);
+  }
+
+  .invitation-calendar__day--selected svg {
+    fill: rgba(234, 220, 204, 0.42);
+    stroke: rgba(234, 220, 204, 0.58);
+  }
+}
+
+@keyframes invitation-skeleton {
+  to {
+    transform: translateX(100%);
+  }
 }
 
 @media (max-width: 760px) {

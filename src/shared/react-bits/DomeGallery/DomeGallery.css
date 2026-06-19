@@ -64,6 +64,24 @@
   filter: grayscale(1) contrast(0.95);
 }
 
+@media (prefers-color-scheme: dark) {
+  .dome-gallery::after {
+    background: radial-gradient(
+      circle at 50% 48%,
+      transparent 52%,
+      rgba(27, 21, 17, 0.62) 74%,
+      rgba(27, 21, 17, 0.9) 100%
+    );
+  }
+
+  .dome-gallery__tile {
+    border-color: rgba(234, 220, 204, 0.24);
+    box-shadow:
+      0 24px 72px rgba(0, 0, 0, 0.36),
+      0 0 0 1px rgba(124, 103, 87, 0.22);
+  }
+}
+
 @media (max-width: 760px) {
   .dome-gallery {
     height: 30rem;

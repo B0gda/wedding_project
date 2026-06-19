@@ -42,7 +42,7 @@
 
 .rsvp-card__copy p {
   margin: 0;
-  color: rgba(90, 68, 54, 0.82);
+  color: var(--color-muted);
   font-size: clamp(1.05rem, 2vw, 1.28rem);
   line-height: 1.65;
 }
@@ -189,7 +189,7 @@
 .rsvp-card__guide p {
   max-width: 720px;
   margin: 0;
-  color: rgba(90, 68, 54, 0.82);
+  color: var(--color-muted);
   font-size: clamp(1.05rem, 2vw, 1.28rem);
   line-height: 1.62;
   text-align: center;
@@ -269,6 +269,19 @@
 .rsvp-card__guide-button:hover::after,
 .rsvp-card__guide-button:focus-visible::after {
   transform: translateX(58%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .rsvp-card__guide-button {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255, 248, 239, 0.2), transparent 34%),
+      linear-gradient(135deg, rgba(42, 171, 238, 0.24), rgba(0, 119, 255, 0.18)),
+      rgba(43, 33, 26, 0.6);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 248, 239, 0.22),
+      inset 0 -1px 0 rgba(255, 248, 239, 0.08),
+      0 24px 70px rgba(0, 0, 0, 0.32);
+  }
 }
 
 @media (max-width: 760px) {

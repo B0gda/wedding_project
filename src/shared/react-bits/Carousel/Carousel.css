@@ -120,6 +120,60 @@
   height: 1.2rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  .carousel__viewport {
+    scrollbar-color: rgba(234, 220, 204, 0.28) transparent;
+  }
+
+  .carousel__viewport:focus-visible {
+    outline-color: rgba(234, 220, 204, 0.42);
+  }
+
+  .carousel__card {
+    border-color: rgba(234, 220, 204, 0.22);
+    background:
+      radial-gradient(circle at 18% 10%, rgba(234, 220, 204, 0.14), transparent 34%),
+      linear-gradient(145deg, rgba(43, 33, 26, 0.88), rgba(124, 103, 87, 0.26));
+    box-shadow:
+      0 24px 80px rgba(0, 0, 0, 0.36),
+      inset 0 1px 0 rgba(255, 248, 239, 0.1);
+  }
+
+  .carousel__card::after {
+    border-color: rgba(234, 220, 204, 0.12);
+  }
+
+  .carousel__index {
+    color: rgba(234, 220, 204, 0.18);
+  }
+
+  .carousel__time {
+    color: rgba(234, 220, 204, 0.82);
+  }
+
+  .carousel__card h3 {
+    color: var(--color-ink);
+  }
+
+  .carousel__card p {
+    color: rgba(255, 248, 239, 0.76);
+  }
+
+  .carousel__button {
+    border-color: rgba(234, 220, 204, 0.24);
+    background: rgba(43, 33, 26, 0.72);
+    color: var(--color-ink);
+    box-shadow:
+      0 14px 38px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 248, 239, 0.1);
+  }
+
+  .carousel__button:hover,
+  .carousel__button:focus-visible {
+    background: rgba(124, 103, 87, 0.42);
+  }
+}
+
 @media (max-width: 720px) {
   .carousel {
     grid-template-columns: auto minmax(0, 1fr) auto;

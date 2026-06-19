@@ -29,3 +29,23 @@
   z-index: 1;
   height: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+  .spotlight-card {
+    background:
+      radial-gradient(
+        circle at var(--spotlight-x, 50%) var(--spotlight-y, 0%),
+        var(--spotlight-color),
+        transparent 34%
+      ),
+      linear-gradient(135deg, rgba(43, 33, 26, 0.84), rgba(124, 103, 87, 0.18)),
+      rgba(27, 21, 17, 0.74);
+    box-shadow:
+      0 30px 120px rgba(0, 0, 0, 0.34),
+      inset 0 1px 0 rgba(255, 248, 239, 0.12);
+  }
+
+  .spotlight-card::before {
+    border-color: rgba(234, 220, 204, 0.18);
+  }
+}

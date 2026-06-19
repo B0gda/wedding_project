@@ -70,3 +70,19 @@
   z-index: 1;
   height: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+  .border-glow {
+    background:
+      radial-gradient(
+        circle var(--border-glow-size) at var(--border-glow-x, 50%) var(--border-glow-y, 0%),
+        rgba(var(--border-glow-color), calc(0.14 * var(--border-glow-intensity))),
+        transparent 72%
+      ),
+      linear-gradient(135deg, rgba(255, 248, 239, 0.08), rgba(255, 248, 239, 0.02)),
+      var(--color-card);
+    box-shadow:
+      0 24px 90px rgba(0, 0, 0, 0.32),
+      inset 0 1px 0 rgba(255, 248, 239, 0.14);
+  }
+}

@@ -13,9 +13,10 @@ type SectionProps = {
   title: string;
   children: ReactNode;
   className?: string;
+  decorRightSrc?: string;
 };
 
-export function Section({ id, label, title, children, className }: SectionProps) {
+export function Section({ id, label, title, children, className, decorRightSrc }: SectionProps) {
   const titleId = `${id}-title`;
   const labelId = `${id}-label`;
 
@@ -26,7 +27,11 @@ export function Section({ id, label, title, children, className }: SectionProps)
       aria-labelledby={title ? titleId : labelId}
     >
       <img className="section__decor section__decor--left" src={sectionDecorLeft} alt="" />
-      <img className="section__decor section__decor--right" src={sectionDecorRight} alt="" />
+      <img
+        className="section__decor section__decor--right"
+        src={decorRightSrc ?? sectionDecorRight}
+        alt=""
+      />
       <FadeContent className="section__inner">
         <p className="section__label" id={labelId}>
           <ShinyText text={label} speed={2.7} />
