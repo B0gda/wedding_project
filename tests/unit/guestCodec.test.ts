@@ -64,6 +64,33 @@ describe('guestCodec', () => {
     });
   });
 
+  it('decodes prefixed plain names as names', () => {
+    const guest = encodeGuestPayload('т.Юля и д.Леша');
+
+    expect(readGuestFromSearch(`?guest=${guest}`)).toEqual({
+      salutation: 'т.Юля и д.Леша',
+      people: [
+        { gender: 'unknown', name: 'т.Юля' },
+        { gender: 'unknown', name: 'д.Леша' }
+      ],
+      isFallback: false
+    });
+  });
+
+  it('decodes mixed prefixed and unprefixed three-person invitations', () => {
+    const guest = encodeGuestPayload('д.Саша, т.Люба и Миша');
+
+    expect(readGuestFromSearch(`?guest=${guest}`)).toEqual({
+      salutation: 'д.Саша, т.Люба и Миша',
+      people: [
+        { gender: 'unknown', name: 'д.Саша' },
+        { gender: 'unknown', name: 'т.Люба' },
+        { gender: 'unknown', name: 'Миша' }
+      ],
+      isFallback: false
+    });
+  });
+
   it('falls back politely on broken base64', () => {
     expect(readGuestFromSearch('?guest=broken%')).toEqual({
       salutation: 'наш уважаемый гость',

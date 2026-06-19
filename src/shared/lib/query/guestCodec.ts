@@ -116,7 +116,7 @@ function parsePlainGuestPayload(payload: string): GuestPerson[] {
 }
 
 function isValidPlainName(name: string): boolean {
-  return /^[\p{L}][\p{L}\s'-]{1,48}$/u.test(name);
+  return /^(?:[\p{L}]\.)?[\p{L}][\p{L}\s'.-]{1,48}$/u.test(name);
 }
 
 function buildSalutation(people: GuestPerson[]): string {
