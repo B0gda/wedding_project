@@ -1,13 +1,23 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { invitationCopy } from '@constants/copy';
 import { useGuestPersonalization } from '@features/guest-personalization/useGuestPersonalization';
 import { HeroSection } from '@widgets/hero/HeroSection';
 import { AnchorNavigation } from '@widgets/navigation/AnchorNavigation';
 import { Aurora } from '@shared/react-bits/Aurora/Aurora';
+import { preloadDeferredInvitationAssets } from '../lib/deferredPreload';
 import './InvitationPage.css';
 
+const loadDeferredInvitationContent = () => import('./DeferredInvitationContent');
+
+const preloadDeferredInvitationContent = () =>
+  loadDeferredInvitationContent().then((module) => {
+    preloadDeferredInvitationAssets();
+
+    return module;
+  });
+
 const DeferredInvitationContent = lazy(() =>
-  import('./DeferredInvitationContent').then((module) => ({
+  preloadDeferredInvitationContent().then((module) => ({
     default: module.DeferredInvitationContent
   }))
 );
@@ -16,6 +26,29 @@ export function InvitationPage() {
   const guest = useGuestPersonalization();
   const heroTitle = getHeroTitle(guest.salutation, guest.people.length);
   const daysLeft = getDaysUntilWedding();
+
+  useEffect(() => {
+    const preload = () => {
+      void preloadDeferredInvitationContent();
+    };
+
+    const requestIdleCallback = Reflect.get(window, 'requestIdleCallback') as
+      | ((callback: () => void, options?: { timeout: number }) => number)
+      | undefined;
+    const cancelIdleCallback = Reflect.get(window, 'cancelIdleCallback') as
+      | ((handle: number) => void)
+      | undefined;
+
+    if (requestIdleCallback) {
+      const idleHandle = requestIdleCallback(preload, { timeout: 1200 });
+
+      return () => cancelIdleCallback?.(idleHandle);
+    }
+
+    const timeoutHandle = window.setTimeout(preload, 120);
+
+    return () => window.clearTimeout(timeoutHandle);
+  }, []);
 
   return (
     <div className="invitation-page">

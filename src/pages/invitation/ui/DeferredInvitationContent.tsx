@@ -1,8 +1,10 @@
 import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
+import { useEffect } from 'react';
 import { restaurantImages, registryOfficeGalleryImages } from '@constants/galleryAssets';
 import { invitationCopy } from '@constants/copy';
 import invitationDecorRight from '@constants/shape1.3adb10d11826d7957c4a.png';
 import { weddingLocations } from '@constants/locations';
+import { preloadDeferredInvitationAssets } from '../lib/deferredPreload';
 import { CoordinatorSection } from '@widgets/coordinator/CoordinatorSection';
 import { DressCodeSection } from '@widgets/dress-code/DressCodeSection';
 import { WeddingFooter } from '@widgets/footer/WeddingFooter';
@@ -20,6 +22,10 @@ type DeferredInvitationContentProps = {
 export function DeferredInvitationContent({ salutation }: DeferredInvitationContentProps) {
   const { invitation } = invitationCopy.sections;
   const [restaurantLocation, registryOfficeLocation] = weddingLocations;
+
+  useEffect(() => {
+    preloadDeferredInvitationAssets();
+  }, []);
 
   return (
     <>

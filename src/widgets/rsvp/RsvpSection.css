@@ -202,9 +202,11 @@
   width: min(620px, 100%);
   place-items: center;
   overflow: hidden;
+  contain: paint;
   padding: 1rem clamp(1.4rem, 4vw, 2.4rem);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 28px;
+  clip-path: inset(0 round 28px);
   background:
     radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.62), transparent 34%),
     linear-gradient(135deg, rgba(42, 171, 238, 0.34), rgba(0, 119, 255, 0.24)),
@@ -220,6 +222,7 @@
     inset 0 -1px 0 rgba(90, 68, 54, 0.12),
     0 24px 70px rgba(139, 107, 85, 0.2);
   backdrop-filter: blur(22px) saturate(1.45);
+  isolation: isolate;
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
@@ -227,13 +230,14 @@
 
 .rsvp-card__guide-button::before {
   position: absolute;
-  inset: -70% auto auto -18%;
+  inset: -58% auto auto 0;
   width: 54%;
   aspect-ratio: 1;
   content: '';
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.45);
   filter: blur(18px);
+  transform: translateX(-28%);
   transition: transform 240ms ease;
 }
 
@@ -263,7 +267,7 @@
 
 .rsvp-card__guide-button:hover::before,
 .rsvp-card__guide-button:focus-visible::before {
-  transform: translate(95%, 52%) scale(1.25);
+  transform: translate(75%, 52%) scale(1.25);
 }
 
 .rsvp-card__guide-button:hover::after,

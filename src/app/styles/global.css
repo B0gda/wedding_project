@@ -26,15 +26,22 @@
 }
 
 html {
+  min-height: 100%;
   scroll-behavior: smooth;
-  background: var(--color-main);
+  background-color: var(--color-main);
 }
 
 body {
+  min-height: 100%;
   min-width: 320px;
   margin: 0;
   color: var(--color-ink);
-  background: var(--color-main);
+  background-color: var(--color-main);
+}
+
+#root {
+  min-height: 100svh;
+  background-color: var(--color-main);
 }
 
 button,
