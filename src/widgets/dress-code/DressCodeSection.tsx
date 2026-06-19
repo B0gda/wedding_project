@@ -13,18 +13,22 @@ export function DressCodeSection() {
     <Section id="dress-code" label={dressCode.label} title={dressCode.title}>
       <div className="dress-code">
         <div className="dress-code__pressure">
-          <TextPressure
-            text={dressCode.pressure}
-            flex
-            alpha
-            stroke
-            width
-            weight
-            italic
-            textColor="#5a4436"
-            strokeColor="#8b6b55"
-            minFontSize={56}
-          />
+          {dressCode.pressure.split(' ').map((word) => (
+            <TextPressure
+              className="dress-code__pressure-line"
+              text={word}
+              flex
+              alpha
+              stroke
+              width
+              weight
+              italic
+              textColor="#5a4436"
+              strokeColor="#8b6b55"
+              minFontSize={56}
+              key={word}
+            />
+          ))}
           <p>{dressCode.subtitle}</p>
         </div>
         <GlassCard className="dress-code__main">

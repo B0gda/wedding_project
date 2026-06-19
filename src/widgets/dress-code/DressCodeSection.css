@@ -10,8 +10,12 @@
   min-height: clamp(13rem, 27vw, 22rem);
 }
 
+.dress-code__pressure-line {
+  line-height: 0.58;
+}
+
 .dress-code__pressure p {
-  margin: clamp(-2rem, -3vw, -0.8rem) 0 0;
+  margin: clamp(-1.2rem, -2vw, -0.4rem) 0 0;
   color: rgba(90, 68, 54, 0.64);
   font-family: var(--font-display);
   font-size: clamp(1.45rem, 3.5vw, 2.9rem);

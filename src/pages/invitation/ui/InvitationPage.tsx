@@ -1,4 +1,4 @@
-import { Map, Placemark, YMaps, ZoomControl } from '@pbe/react-yandex-maps';
+import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
 import { restaurantImages, registryOfficeGalleryImages } from '@constants/galleryAssets';
 import { invitationCopy } from '@constants/copy';
 import { weddingLocations } from '@constants/locations';
@@ -36,29 +36,10 @@ export function InvitationPage() {
       <main>
         <HeroSection title={heroTitle} daysLeft={daysLeft} />
         <Section id="invitation" label={invitation.label} title={invitation.title}>
-          <div className="invitation-page__experience">
-            <DomeGallery
-              images={restaurantImages}
-              fit={0.8}
-              minRadius={600}
-              maxVerticalRotationDeg={0}
-              segments={34}
-              dragDampening={2}
-              grayscale={false}
-            />
-            <p className="invitation-page__place-note">{invitation.restaurantIntro}</p>
-            <LocationMap location={restaurantLocation} />
-            <div className="invitation-page__statement invitation-page__statement--solo">
-              <p className="invitation-page__lead">
-                <strong>{invitation.registryTitle}</strong>
-              </p>
-              {invitation.registryText.split('\n\n').map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            <div className="invitation-page__registry">
+          <YMaps query={{ lang: 'ru_RU', load: 'package.full' }}>
+            <div className="invitation-page__experience">
               <DomeGallery
-                images={registryOfficeGalleryImages}
+                images={restaurantImages}
                 fit={0.8}
                 minRadius={600}
                 maxVerticalRotationDeg={0}
@@ -66,10 +47,31 @@ export function InvitationPage() {
                 dragDampening={2}
                 grayscale={false}
               />
-              <p>{invitation.registryAddress}</p>
+              <p className="invitation-page__place-note">{invitation.restaurantIntro}</p>
+              <LocationMap location={restaurantLocation} />
+              <div className="invitation-page__statement invitation-page__statement--solo">
+                <p className="invitation-page__lead">
+                  <strong>{invitation.registryTitle}</strong>
+                </p>
+                {invitation.registryText.split('\n\n').map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+              <div className="invitation-page__registry">
+                <DomeGallery
+                  images={registryOfficeGalleryImages}
+                  fit={0.8}
+                  minRadius={600}
+                  maxVerticalRotationDeg={0}
+                  segments={34}
+                  dragDampening={2}
+                  grayscale={false}
+                />
+                <p>{invitation.registryAddress}</p>
+              </div>
+              <LocationMap location={registryOfficeLocation} />
             </div>
-            <LocationMap location={registryOfficeLocation} />
-          </div>
+          </YMaps>
         </Section>
         <TimelineSection />
         <DressCodeSection />
@@ -85,15 +87,13 @@ function LocationMap({ location }: { location: WeddingLocation }) {
   return (
     <article className="invitation-page__map-card">
       <h3>{location.title}</h3>
-      <YMaps query={{ lang: 'ru_RU' }}>
-        <Map
-          className="invitation-page__map"
-          defaultState={{ center: location.center, zoom: location.zoom }}
-        >
-          <Placemark geometry={location.center} />
-          <ZoomControl />
-        </Map>
-      </YMaps>
+      <Map
+        className="invitation-page__map"
+        defaultState={{ center: location.center, controls: ['zoomControl'], zoom: location.zoom }}
+        options={{ suppressMapOpenBlock: true }}
+      >
+        <Placemark geometry={location.center} />
+      </Map>
     </article>
   );
 }
